@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BeastTokenGiver extends JavaPlugin implements Listener {
 
-    private HashMap<UUID, Long> data = new HashMap<>();
+    private HashMap<UUID, Long> data = new HashMap<>(); //test
 
     @Override
     public void onEnable() {
