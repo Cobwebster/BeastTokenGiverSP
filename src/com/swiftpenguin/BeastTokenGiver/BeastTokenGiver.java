@@ -26,14 +26,13 @@ public class BeastTokenGiver extends JavaPlugin implements Listener {
             for (UUID key : data.keySet() ) {
 
                     long math = timeStampNow - data.get(key);
-                    Bukkit.getServer().broadcastMessage("Checking..." + math);
 
-                    if (math >= 60) {
+                    if (math >= 1800) {
                         getServer().dispatchCommand(getServer().getConsoleSender(), "token add " + Bukkit.getPlayer(key).getName() + " 5" );
                         data.replace(key, System.currentTimeMillis() / 1000);
                     }
             }
-        }, 50, 100);
+        }, 60 * 20, 60*20);
     }
 
     @Override
