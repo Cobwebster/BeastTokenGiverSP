@@ -20,15 +20,16 @@ public class BeastTokenGiver extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
+
             long timeStampNow = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 
-            for(UUID key : data.keySet() ) {
+            for (UUID key : data.keySet() ) {
 
                     long math = timeStampNow - data.get(key);
                     Bukkit.getServer().broadcastMessage("Checking..." + math);
 
                     if (math >= 60) {
-                        getServer().dispatchCommand(getServer().getConsoleSender(), "broadcast hi");
+                        getServer().dispatchCommand(getServer().getConsoleSender(), "token add " + Bukkit.getPlayer(key).getName() + " 5" );
                         data.replace(key, System.currentTimeMillis() / 1000);
                     }
             }
